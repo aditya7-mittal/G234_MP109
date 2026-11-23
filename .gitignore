@@ -7,3 +7,7 @@ __pycache__/
 .env
 *.log
 .DS_Store
+
+# MLflow generated artifacts
+mlruns/
+mlartifacts/
