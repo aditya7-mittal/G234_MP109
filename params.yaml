@@ -1,0 +1,28 @@
+﻿cleaning:
+  age:
+    column: age_years
+    affected_zone: Central
+    conversion_factor: 12
+  sentinel:
+    column: service_records
+    value: -999
+  duplicates:
+    keep: first
+  brand:
+    column: brand_tier
+    categories:
+      - budget
+      - mid
+      - premium
+
+training:
+  random_state: 42
+  test_size: 0.2
+  model_type: RandomForestRegressor
+  experiments:
+    - n_estimators: 100
+      max_depth: 5
+    - n_estimators: 200
+      max_depth: 10
+    - n_estimators: 300
+      max_depth: null
