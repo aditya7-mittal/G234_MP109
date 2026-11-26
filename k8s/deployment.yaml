@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mp109-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mp109-api
+  template:
+    metadata:
+      labels:
+        app: mp109-api
+    spec:
+      containers:
+        - name: mp109-api
+          image: mp109-api:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
